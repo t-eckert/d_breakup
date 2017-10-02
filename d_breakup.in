@@ -1,0 +1,10 @@
+# Macro file for n2n d test
+
+/run/initialize
+
+# 14.03 MeV neutrons
+/gun/particle neutron
+/gun/energy 14.03 MeV
+#
+/run/printProgress 100
+/run/beamOn 10000000
