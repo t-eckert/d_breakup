@@ -5,5 +5,5 @@
 #PBS -j oe
 #PBS -m a
 #PBS -m e
-n2n_d run.mac
+d_breakup run.mac
 exit

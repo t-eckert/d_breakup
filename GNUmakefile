@@ -1,6 +1,6 @@
 # $Id: GNUmakefile 68058 2013-03-13 14:47:43Z gcosmo $
 
-name := n2n_d
+name := d_breakup
 G4TARGET := $(name)
 G4EXLIB := true
 

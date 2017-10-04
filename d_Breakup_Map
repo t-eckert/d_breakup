@@ -1,0 +1,7 @@
+d_breakup.cc
+    main() +->(ui = arguments[0,1]) 0: No UI; 1: UI.
+           +-> new G4RunManager -> DetectorConstruction() + // Create Materials +-> vacuum
+           |                                              |                     +-> D2O
+           |                                              |                     +-> D
+           |                                              |                     +-> polyethylene                    
+           +->

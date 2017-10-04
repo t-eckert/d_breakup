@@ -3,7 +3,7 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
-project(n2n_d)
+project(d_breakup)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
@@ -35,24 +35,24 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(n2n_d n2n_d.cc ${sources} ${headers})
-target_link_libraries(n2n_d ${Geant4_LIBRARIES})
+add_executable(d_breakup d_breakup.cc ${sources} ${headers})
+target_link_libraries(d_breakup ${Geant4_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
-# build n2n d. This is so that we can run the executable directly because it
+# build d breakup. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(n2n_d_SCRIPTS
-  n2n_d.in
-  n2n_d.out
+set(d_breakup_SCRIPTS
+  d_breakup.in
+  d_breakup.out
   init_vis.mac
   run.mac
   run_test.mac
   vis.mac
   )
 
-foreach(_script ${n2n_d_SCRIPTS})
+foreach(_script ${d_breakup_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}
@@ -64,9 +64,9 @@ endforeach()
 # For internal Geant4 use - but has no effect if you build this
 # example standalone
 #
-add_custom_target(B1 DEPENDS n2n_d)
+add_custom_target(B1 DEPENDS d_breakup)
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-install(TARGETS n2n_d DESTINATION bin)
+install(TARGETS d_breakup DESTINATION bin)

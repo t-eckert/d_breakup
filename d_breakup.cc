@@ -33,8 +33,8 @@ int main(int argc, char** argv)
   runManager->SetUserInitialization(new DetectorConstruction());
 
   // Physics list
-  //G4VModularPhysicsList* physicsList = new FTFP_BERT_HP;    // activate to use the GEANT cross section
-  G4VModularPhysicsList* physicsList = new PhysicsList;
+  G4VModularPhysicsList* physicsList = new FTFP_BERT_HP;    // activate to use the GEANT cross section
+  //G4VModularPhysicsList* physicsList = new PhysicsList;
   physicsList->SetVerboseLevel(0);
   runManager->SetUserInitialization(physicsList);
 
