@@ -3,6 +3,7 @@
 #include "RunAction.hh"
 #include "EventAction.hh"
 #include "SteppingAction.hh"
+#include "DetectorConstruction.hh"
 
 ActionInitialization::ActionInitialization()
  : G4VUserActionInitialization()

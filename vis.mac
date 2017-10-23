@@ -73,7 +73,7 @@
 # Name
 /vis/set/textColour blue
 /vis/set/textLayout right
-/vis/scene/add/text2D 0.9 -.9 24 ! ! D20_Sphere_I
+/vis/scene/add/text2D 0.9 -.9 24 ! ! d_breakup
 
 #
 # Axes, scale, etc.
@@ -91,10 +91,10 @@
 /vis/set/lineWidth     # Revert to default line width (1.)
 #
 # Attach text to one edge of Shape1, with a small, fixed offset
-/vis/scene/add/text 0 -40 0 cm 20 20 20 Heavy_Water_Sphere
+#/vis/scene/add/text 0 -40 0 cm 20 20 20 Heavy_Water_Sphere
 # Attach text to one corner of Shape2, with a small, fixed offset
-/vis/scene/add/text 0 -20 10 cm 20 20 20 Neutron_Source
-/vis/scene/add/text 0 -20 -80 cm 20 20 20 Plastic_Scoring_Volume
+#/vis/scene/add/text 0 -20 10 cm 20 20 20 Neutron_Source
+#/vis/scene/add/text 0 -20 -80 cm 20 20 20 Plastic_Scoring_Volume
 #
 # To get nice view
 /vis/viewer/set/style surface
