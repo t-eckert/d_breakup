@@ -50,6 +50,7 @@ set(d_breakup_SCRIPTS
   run.mac
   run_test.mac
   vis.mac
+  analyze.py
   )
 
 foreach(_script ${d_breakup_SCRIPTS})
