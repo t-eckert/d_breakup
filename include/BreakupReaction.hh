@@ -29,12 +29,7 @@ private:
         G4ParticleDefinition* products[]
     );
 
-    G4double Prob1(const G4double angle);
-    G4double Prob2(const G4double angle);
-    G4double Prob3(const G4double angle);
-    G4double Prob4(const G4double angle);
-    G4double Prob5(const G4double angle);
-    G4double Prob6(const G4double angle);
+    G4double Probability_Calculator(const G4double angle);
 
     G4BinaryCascade* theModel;
     G4ExcitationHandler* theHandler;

@@ -1,7 +1,7 @@
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
 #include "G4RunManager.hh"
-
+#include "PhysicsList.hh"
 
 #include "G4UImanager.hh"
 #include "FTFP_BERT_HP.hh"
@@ -33,10 +33,10 @@ int main(int argc, char** argv)
   runManager->SetUserInitialization(new DetectorConstruction());
 
   // Physics list
-  G4VModularPhysicsList* physicsList = new FTFP_BERT_HP;    // activate to use the GEANT cross section
-  //G4VModularPhysicsList* physicsList = new PhysicsList;
-  physicsList->SetVerboseLevel(0);
-  runManager->SetUserInitialization(physicsList);
+  //G4VModularPhysicsList* physicsList = new FTFP_BERT_HP;    // activate to use the GEANT cross section
+  //physicsList = new PhysicsList;
+  //physicsList->SetVerboseLevel(0);
+  runManager->SetUserInitialization(new PhysicsList);
 
   // User action initialization
   runManager->SetUserInitialization(new ActionInitialization());
