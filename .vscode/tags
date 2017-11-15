@@ -4,14 +4,16 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+PROJECT_NAME	../analyze.py	/^PROJECT_NAME = input("Project: ")$/;"	kind:variable	line:51
 analyze.py	../analyze.py	1;"	kind:file	line:1
 breakup	../analyze.py	/^breakup = []$/;"	kind:variable	line:6
-discrim	../analyze.py	/^def discrim(data):$/;"	kind:function	line:23
-hist	../analyze.py	/^def hist(array, name, sub_number):$/;"	kind:function	line:32
-load	../analyze.py	/^def load(project,filename):$/;"	kind:function	line:8
-load_ENDF	../analyze.py	/^def load_ENDF():$/;"	kind:function	line:43
+discrim	../analyze.py	/^def discrim(data):$/;"	kind:function	line:21
+hist	../analyze.py	/^def hist(array, name, sub_number):$/;"	kind:function	line:30
+load	../analyze.py	/^def load(projectname):$/;"	kind:function	line:17
+load_cross_sec	../analyze.py	/^def load_cross_sec(filename,x_scale,y_scale):$/;"	kind:function	line:41
 matplotlib	../analyze.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:1
 noInter	../analyze.py	/^noInter = []$/;"	kind:variable	line:4
-np	../analyze.py	/^import numpy as np $/;"	kind:namespace	line:2
+np	../analyze.py	/^import numpy as np$/;"	kind:namespace	line:2
+order	../analyze.py	/^def order(projectname):$/;"	kind:function	line:8
 plt	../analyze.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:1
 scatter	../analyze.py	/^scatter = []$/;"	kind:variable	line:5

@@ -36,7 +36,7 @@ r0( 1.1 /*Check this usage*/)
 BreakupCrossSection::~BreakupCrossSection()
 {}
 
-void BreakupCrossSection:: CrossSectionDescription(std::ostream& outFile) const
+void BreakupCrossSection::CrossSectionDescription(std::ostream& outFile) const
 {
     outFile << "BreakupCrossSection calculates the total reaction spectra\n"
             << "for arbitrary input cross section\n";

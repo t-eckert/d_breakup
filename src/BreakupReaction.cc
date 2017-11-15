@@ -9,8 +9,8 @@
 BreakupReaction::BreakupReaction(G4VPreCompoundModel* ptr):
 G4HadronicInteraction("Breakup"),
 theProjectileFragmentation(ptr),
-pA(0),pZ(0), tA(0),tZ(0),spectatorA(0),spectatorZ(0),
-projectile3dNucleus(0),target3dNucleus(0)
+pA(0), pZ(0), tA(0), tZ(0), spectatorA(0), spectatorZ(0),
+projectile3dNucleus(0), target3dNucleus(0)
 {}
 
 BreakupReaction::~BreakupReaction()
@@ -41,7 +41,6 @@ G4HadFinalState* BreakupReaction::ApplyYourself(
 	//pZ=G4lrint(aTrack.GetDefinition()->GetPDGCharge()/eplus);
 	tA=tNucleus.GetA_asInt();
 	tZ=tNucleus.GetZ_asInt();
-	
 
     G4double tM=G4ParticleTable::GetParticleTable()->GetIonTable()->GetIonMass(tZ,tA);
 	
@@ -49,12 +48,12 @@ G4HadFinalState* BreakupReaction::ApplyYourself(
     G4LorentzVector tarMom(0,0,0,tM);    
     
     // 	G4cout << "proj mom : " << incMom << G4endl;
-// 	G4cout << "target mom : " << tarMom << G4endl;
-//  G4double iM=G4ParticleTable::GetParticleTable()->GetIonTable()->GetIonMass(pZ,pA);	
-// 	G4cout << "Fusion: "  <<  incMom.theta()*180/pi << " " << (incMom.e()-iM) << G4endl;
+    // 	G4cout << "target mom : " << tarMom << G4endl;
+    //  G4double iM=G4ParticleTable::GetParticleTable()->GetIonTable()->GetIonMass(pZ,pA);	
+    // 	G4cout << "Fusion: "  <<  incMom.theta()*180/pi << " " << (incMom.e()-iM) << G4endl;
 	
 	// transform into CM frame 
-	const G4ThreeVector   cmBoost = incMom.findBoostToCM(tarMom);//The boost from CM to lab
+	const G4ThreeVector    cmBoost = incMom.findBoostToCM(tarMom);//The boost from CM to lab
     const G4LorentzVector cmincMom = incMom.boost(cmBoost);
 	const G4LorentzVector cmtarMom = tarMom.boost(cmBoost);
 	
@@ -83,7 +82,7 @@ G4HadFinalState* BreakupReaction::ApplyYourself(
 	 */
 	
 	// energy
-    G4double rE = (eInc*eInc - sM*sM + rM*rM)/(2*eInc);                        //recoil energy B10
+    G4double rE = (eInc*eInc - sM*sM + rM*rM)/(2*eInc);                        //recoil energy d
     G4double sE = eInc - rE;		                                           //scatter energy n
 	
 	// momentum
@@ -119,7 +118,7 @@ G4HadFinalState* BreakupReaction::ApplyYourself(
     } while(G4UniformRand()>=prob);
     G4double cosTheta = std::cos(angle);
     G4double sinTheta = std::sqrt(1. - cosTheta*cosTheta);
-    G4double phi      = 6.2832*G4UniformRand();  //phi uniform in [0, 2*pi]
+    G4double phi      = twopi*G4UniformRand();  //phi uniform in [0, 2*pi]
     ur=G4ThreeVector(sinTheta*std::cos(phi),sinTheta*std::sin(phi),cosTheta);
 
     G4cout << normalVector.angle(ur) << G4endl;
@@ -161,6 +160,7 @@ void BreakupReaction::GetBreakupProducts(
     G4ParticleDefinition* products[]
 )
 {
+    G4cout << "HERE!\n";
     // the pA, pZ, tA, tZ refer to the protons and nucleons of reactants. 
     // Naming convention comes from Christian. Not going to refractor it for now. 
     // If the reactants are a neutron and deuteron, set the breakup products.
