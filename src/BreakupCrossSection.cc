@@ -23,10 +23,12 @@
 static const G4int ZTargetApply=1;      //d
 static const G4int ZProjectileApply=0;  //n    
 
+G4double tM = 1.8756*GeV;
+
 // Enter Max/Min Energy
 BreakupCrossSection::BreakupCrossSection():
 G4VCrossSectionDataSet(/****Not sure what goes here ***/),
-upperLimit( 12*MeV ),
+upperLimit( 16*MeV ),
 lowerLimit(  0*MeV ),
 r0( 1.1 /*Check this usage*/)
 {}
@@ -37,7 +39,7 @@ BreakupCrossSection::~BreakupCrossSection()
 void BreakupCrossSection:: CrossSectionDescription(std::ostream& outFile) const
 {
     outFile << "BreakupCrossSection calculates the total reaction spectra\n"
-          << "for arbitrary input cross section\n";
+            << "for arbitrary input cross section\n";
 }
 
 G4bool BreakupCrossSection::IsElementApplicable(
@@ -49,7 +51,8 @@ G4bool BreakupCrossSection::IsElementApplicable(
     G4int tA = 0;
     G4int tZ = 0;
 
-    G4int pA = aDParticle->GetDefinition()->GetBaryonNumber();          //projectile baryon number
+    // Projectile Baryon and Atomic Numbers
+    G4int pA = aDParticle->GetDefinition()->GetBaryonNumber();
     G4int pZ = aDParticle->GetDefinition()->GetAtomicNumber();
 
     const G4ElementVector* elements = aMaterial->GetElementVector();
@@ -65,18 +68,20 @@ G4bool BreakupCrossSection::IsElementApplicable(
 G4double BreakupCrossSection::GetElementCrossSection(
     const G4DynamicParticle* aDParticle,
     G4int tZ,
+    G4double tM,
     const G4Material* aMaterial
 )
 {
     // A == target A
     G4int tA = aMaterial->GetElement(0)->GetIsotope(0)->GetN();
 
-    G4int pZ = aDParticle->GetDefinition()->GetAtomicNumber();
+    // Projectile Baryon and Atomic Numbers
     G4int pA = aDParticle->GetDefinition()->GetBaryonNumber();
+    G4int pZ = aDParticle->GetDefinition()->GetAtomicNumber();
 
     if (tZ != ZTargetApply) return 0.0;
 
-    G4double xsection = GetIsoCrossSection( aDParticle, tZ, tA );
+    G4double xsection = GetIsoCrossSection( aDParticle, tZ, tA, tM );
 
     G4double nDens = aMaterial->GetElement(0)->GetA();
 
@@ -87,6 +92,7 @@ G4double BreakupCrossSection::GetIsoCrossSection(
     const G4DynamicParticle* aDParticle,
     G4int tZ,
     G4int tA,
+    G4double tM,
     const G4Isotope*,
     const G4Element*,
     const G4Material*
@@ -94,7 +100,7 @@ G4double BreakupCrossSection::GetIsoCrossSection(
 {
     if(tZ!=ZTargetApply) return 0.0;
     // calculate CM energy in keV
-    G4double E = GetCMEnergy(aDParticle,tZ,tA)*1000.0;
+    G4double E = GetCMEnergy(aDParticle,tZ,tA,tM)*1000.0;
 
     G4int pZ = aDParticle->GetDefinition()->GetAtomicNumber();
     G4int pA = aDParticle->GetDefinition()->GetBaryonNumber();
@@ -107,7 +113,8 @@ G4double BreakupCrossSection::GetIsoCrossSection(
 G4double BreakupCrossSection::GetCMEnergy(
     const G4DynamicParticle* aDParticle,
     G4int tZ,
-    G4int tA
+    G4int tA,
+    G4double tM
 )
 {
     // projectile
@@ -116,7 +123,7 @@ G4double BreakupCrossSection::GetCMEnergy(
 
     // target
     // const G4double tM = G4ParticleTable::GetParticleTable()->FindIon(tZ,tA,0,0)->GetPDGMass();
-    const G4double tM = 4.5*GeV;                  //MANUALLY ENTERED TARGET MASS
+    //const G4double tM = 4.5*GeV;                  //MANUALLY ENTERED TARGET MASS
     G4LorentzVector tarMom(0,0,0,tM);
     
     // 	G4cout << "proj mom : " << incMom << "target mom : " << tarMom << " pM " << pM << " tM " << tM << G4endl;

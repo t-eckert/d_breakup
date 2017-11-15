@@ -24,6 +24,7 @@ public:
     virtual G4double GetElementCrossSection(
         const G4DynamicParticle*,
         G4int Z,
+        G4double tM,
         const G4Material*
     );
 
@@ -31,6 +32,7 @@ public:
         const G4DynamicParticle*,
         G4int Z,
         G4int A,
+        G4double tM,
         const G4Isotope* iso = 0,
         const G4Element* elm = 0,
         const G4Material* mat = 0
@@ -46,7 +48,8 @@ private:
     G4double GetCMEnergy(
         const G4DynamicParticle* aDParticle,
         G4int tZ,
-        G4int tA
+        G4int tA,
+        G4double tM
     );
 
     G4int GetCrossSectionIndex(
