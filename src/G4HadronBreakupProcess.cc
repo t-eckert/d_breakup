@@ -1,10 +1,10 @@
 // Breakup Process Class
  
-#include "G4BreakupProcess.hh"
+#include "G4HadronBreakupProcess.hh"
 #include "G4GenericIon.hh"
 #include "G4ParticleDefinition.hh"
   
-G4BreakupProcess::G4BreakupProcess(
+G4HadronBreakupProcess::G4HadronBreakupProcess(
     const G4String& processName,
     G4ParticleDefinition* aParticle
 ): G4HadronicProcess(processName, fHadronInelastic) // was fHadronInelastic from G4HadronicProcessType.hh
@@ -13,11 +13,11 @@ G4BreakupProcess::G4BreakupProcess(
     theParticle = aParticle;
 }
 
-G4BreakupProcess::~G4BreakupProcess() 
+G4HadronBreakupProcess::~G4HadronBreakupProcess() 
 {}
 
-G4bool G4BreakupProcess::IsApplicable(const G4ParticleDefinition& aP)
+G4bool G4HadronBreakupProcess::IsApplicable(const G4ParticleDefinition& aP)
 {
-  G4cout << "G4BreakupProcess::IsApplicable called! "  << G4endl;
+  G4cout << "G4HadronBreakupProcess::IsApplicable called! "  << G4endl;
   return  theParticle == &aP || theParticle == G4GenericIon::GenericIon();
 }

@@ -4,23 +4,23 @@
     PostStepDoIt has not been defined yet.
 */
 
-#ifndef G4BreakupProcess_h
-#define G4BreakupProcess_h 1
+#ifndef G4HadronBreakupProcess_h
+#define G4HadronBreakupProcess_h 1
 
 #include "G4HadronicProcess.hh"
 
 class G4ParticleDefinition;
 
-class G4BreakupProcess : public G4Process
+class G4HadronBreakupProcess : public G4HadronicProcess
 {
 public:
     
-  G4BreakupProcess(
-        const G4String &processName,
+  G4HadronBreakupProcess(
+      const G4String &processName,
 	    G4ParticleDefinition *aParticle 
     );
     
-  virtual ~G4BreakupProcess();
+  virtual ~G4HadronBreakupProcess();
         
   virtual G4bool IsApplicable(const G4ParticleDefinition& aParticleType);
 

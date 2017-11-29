@@ -79,8 +79,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   G4Material* polyethylene = NIST_Manager->FindOrBuildMaterial("G4_POLYETHYLENE");
 
   // World --------------------------------------------------------------------
-  G4double world_size_XY = 10*cm;
-  G4double world_size_Z = 10*cm;
+  G4double world_size_XY = 20*cm;
+  G4double world_size_Z = 20*cm;
 
   G4Material* world_material = vacuum;
 
