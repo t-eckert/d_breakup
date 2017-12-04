@@ -4,19 +4,26 @@
 #include "G4UserEventAction.hh"
 #include "globals.hh"
 
-class RunAction;
-
 class EventAction : public G4UserEventAction
 {
 public:
-    EventAction(RunAction* runAction);
+    EventAction();
     virtual ~EventAction();
 
     virtual void BeginOfEventAction(const G4Event* event);
     virtual void EndOfEventAction(const G4Event* event);
 
+    void AddDetector(G4double de, G4double dl);
+
 private:
-    RunAction* fRunAction;
+    G4double fEnergyDetector;
+    G4double fTrackLDetector;
 };
+
+inline void EventAction::AddDetector(G4double de, G4double dl) 
+{
+    fEnergyDetector += de;
+    fTrackLDetector += dl;
+}
 
 #endif

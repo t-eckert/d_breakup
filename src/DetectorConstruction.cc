@@ -114,38 +114,38 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     true                                // check overlaps
   );
   
-  // D Plane -----------------------------------------------------------------
+  // D Shell -----------------------------------------------------------------
 
   // Def materials and location of sphere
-  G4Material* material_D_plane = D;
+  G4Material* material_D_shell = D;
   G4ThreeVector origin = G4ThreeVector(0,0,0);
 
   // Def sphere geometry
-  G4double r_min=0.*cm, r_max=1*cm;
+  G4double r_min=0.9*cm, r_max=1*cm;
   G4double phi_min=0., phi_max=twopi;
   G4double theta_min=0., theta_max=pi;
 
   // Def solid volume
-  G4Box* solid_D_plane = new G4Box(
-    "D Plane",                          // name    
-    2*cm,                                // radius
-    2*cm,                               // phi angle
-    0.01*cm                              // theta angle
+  G4Sphere solid_D_shell = new G4Sphere(
+    "D Shell",                          // name    
+    r_min, r_max,                       // radius
+    phi_min, phi_max                    // phi angle
+    theta_min, theta_max                // theta angle
   );
 
   // Def logical volume
-  G4LogicalVolume* logic_D_plane = new G4LogicalVolume(
-    solid_D_plane,                      // solid
-    material_D_plane,                   // heavy water
-    "D Plane"                            // name
+  G4LogicalVolume* logic_D_shell = new G4LogicalVolume(
+    solid_D_shell,                      // solid
+    material_D_shell,                   // heavy water
+    "D Shell"                           // name
   );
   
   // Place the shape in space
   new G4PVPlacement(
     0,                                  // no rotation
     origin,                             // location at origin
-    logic_D_plane,                      // logical volume
-    "D Plane",                          // name
+    logic_D_shell,                      // logical volume
+    "D Shell",                          // name
     logic_world,                        // mother volume
     false,                              // overlapping structure
     0,                                  // copy number

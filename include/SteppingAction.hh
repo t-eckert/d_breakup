@@ -4,18 +4,24 @@
 #include "G4UserSteppingAction.hh"
 #include "globals.hh"
 
+class DetectorConstruction;
 class EventAction;
 
-class G4LogicalVolume;
+// In UserSteppingAction(), there are collected the energy deposit and track
+// lengths of charged particles in Absorber and Gap layers and updated in 
+// EventAction
 
 class SteppingAction : public G4UserSteppingAction
 {
 public:
-    SteppingAction(EventAction* eventAction);
+    SteppingAction(
+        const DetectorConstruction* detectorConstruction,
+        EventAction* eventAction
+    );
     virtual ~SteppingAction();
 
     // method from user base class
-    virtual void UserSteppingAction(const G4Step*);
+    virtual void UserSteppingAction(const G4Step* step);
 
 private: 
     EventAction* fEventAction;

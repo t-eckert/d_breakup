@@ -32,7 +32,7 @@ fParticleGun(0)
     // G4double y_p = std::sin(theta)*std::sin(phi);
     // G4double z_p = std::cos(phi);
 
-    G4ThreeVector p = G4ThreeVector(0.,0.,1);
+    G4ThreeVector p = G4ThreeVector(1.,1.,1);
 
     fParticleGun->SetParticleMomentumDirection(p);
     fParticleGun->SetParticleEnergy(14.03);

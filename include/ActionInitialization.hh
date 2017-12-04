@@ -3,6 +3,8 @@
 
 #include "G4VUserActionInitialization.hh"
 
+class DetectorConstruction;
+
 class ActionInitialization : public G4VUserActionInitialization
 {
   public:
@@ -11,6 +13,9 @@ class ActionInitialization : public G4VUserActionInitialization
 
     virtual void BuildForMaster() const;
     virtual void Build() const;
+
+    private:
+    DetectorConstruction* fDetConstruction;
 };
 
 #endif

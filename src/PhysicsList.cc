@@ -27,6 +27,7 @@ G4VModularPhysicsList()
     new G4UnitDefinition( "um2/mg", "um2/mg","Surface/Mass", um*um/mg);
 
     RegisterPhysics(new G4HadronElasticPhysics(ver));
+    RegisterPhysics(new TE_HadronInelasticPhysics(ver));
 }
 
 PhysicsList::~PhysicsList()
